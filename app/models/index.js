@@ -1,0 +1,12 @@
+const dbConfig = require("../config/db.config.js");
+const mongoose = require("mongoose");
+mongoose.Promise = global.Promise;
+const db = {};
+db.mongoose = mongoose;
+db.url = dbConfig.url;
+db.userModel = require("./userModel.js")(mongoose);
+db.itemModel = require("./inventoryModel.js")(mongoose);
+db.orderModel = require("./orderModel.js")(mongoose);
+db.loginTokenModel = require("./loginTokenModel.js")(mongoose);
+//db.tokenModel = require("./tokenModel.js")(mongoose);
+module.exports = db;
